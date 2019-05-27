@@ -663,6 +663,7 @@ Form::registerSanitizers([
 	'int' => '\Pandora3\Widgets\Form\Sanitizers\SanitizerInteger',
 	'date' => '\Pandora3\Widgets\Form\Sanitizers\SanitizerDate',
 	'lower' => '\Pandora3\Widgets\Form\Sanitizers\SanitizerLowercase',
+	'trim' => '\Pandora3\Widgets\Form\Sanitizers\SanitizerTrim',
 	'file' => '\Pandora3\Widgets\Form\Sanitizers\SanitizerFile',
 ]);
 
