@@ -280,9 +280,10 @@ abstract class Form {
 	 * @return mixed
 	 */
 	public function get(string $name) {
-		return $this->values[$name]
-			?? $this->model->$name
-			?? null;
+		if (array_key_exists($name, $this->values)) {
+			return $this->values[$name];
+		}
+		return $this->model->$name ?? null;
 	}
 
 	/**
@@ -357,6 +358,7 @@ abstract class Form {
 			$this->loadFromRequest($this->request),
 			$this->requestExcludeFields
 		);
+		$values = array_intersect_key($values, $this->fields);
 		$values = $this->sanitize($values);
 		$this->isLoaded = true;
 		return $this->values = $this->afterLoad($values);
