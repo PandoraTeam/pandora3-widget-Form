@@ -1,0 +1,17 @@
+{
+	"name": "pandora3/widget-form",
+	"type": "pandora3-widget",
+	"description": "Pandora 3: Widget Form",
+	"homepage": "https://github.com/PandoraTeam/pandora3-widget-Form",
+	"authors": [
+		{
+			"name": "Petr Gostin",
+			"email": "nescafe238@gmail.com",
+			"homepage": "http://u-238.ru",
+			"role": "Developer"
+		}
+	],
+	"extra": {
+		"installer-name": "Form"
+	}
+}
