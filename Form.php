@@ -321,7 +321,7 @@ abstract class Form {
  	 * @return array
  	 */
 	public function only(...$arguments): array {
-		$fieldNames = array_diff($arguments, array_keys($this->fields));
+		$fieldNames = array_intersect($arguments, array_keys($this->fields));
 		$values = [];
 		foreach ($fieldNames as $name) {
 			$values[$name] = $this->get($name);
