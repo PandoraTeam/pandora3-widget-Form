@@ -671,6 +671,7 @@ Form::registerSanitizers([
 
 Form::registerFields([
 	'input' => '\Pandora3\Widgets\FieldText\FieldText',
+	'email' => '\Pandora3\Widgets\FieldText\FieldText',
 	'password' => '\Pandora3\Widgets\FieldText\FieldText',
 	'date' => '\Pandora3\Widgets\FieldDate\FieldDate',
 
