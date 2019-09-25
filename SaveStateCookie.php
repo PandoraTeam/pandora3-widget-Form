@@ -8,6 +8,9 @@ use Pandora3\Libs\Time\Date;
 use Pandora3\Widgets\FieldFile\FieldFile;
 
 /**
+ * Trait SaveStateCookie
+ * @package Pandora3\Widgets\Form
+ *
  * @property string $method
  */
 trait SaveStateCookie {
