@@ -378,24 +378,22 @@ abstract class Form {
 				$fieldSanitizers = [$fieldSanitizers];
 			}
 			$value = $values[$fieldName] ?? null;
-			if (!is_null($value)) {
-				foreach ($fieldSanitizers as $key => $sanitizer) {
-					$arguments = [];
-					if (!is_numeric($key)) {
-						$arguments = $sanitizer;
-						$sanitizer = $key;
-					}
-					if (!array_key_exists($sanitizer, self::$sanitizerTypes)) {
-						throw new UnregisteredSanitizerException($sanitizer);
-					}
-					$sanitizerClass = self::$sanitizerTypes[$sanitizer];
-					if (!class_exists($sanitizerClass)) {
-						throw new SanitizerClassNotFoundException($sanitizerClass);
-					}
-					$value = $sanitizerClass::sanitize($value, $arguments);
+			foreach ($fieldSanitizers as $key => $sanitizer) {
+				$arguments = [];
+				if (!is_numeric($key)) {
+					$arguments = $sanitizer;
+					$sanitizer = $key;
 				}
-				$values[$fieldName] = $value;
+				if (!array_key_exists($sanitizer, self::$sanitizerTypes)) {
+					throw new UnregisteredSanitizerException($sanitizer);
+				}
+				$sanitizerClass = self::$sanitizerTypes[$sanitizer];
+				if (!class_exists($sanitizerClass)) {
+					throw new SanitizerClassNotFoundException($sanitizerClass);
+				}
+				$value = $sanitizerClass::sanitize($value, $arguments);
 			}
+			$values[$fieldName] = $value;
 		}
 		return $values;
 	}
