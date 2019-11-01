@@ -10,7 +10,7 @@ use Pandora3\Widgets\Form\Interfaces\SanitizerInterface;
 class SanitizerInteger implements SanitizerInterface {
 	
 	/**
-	 * @param string $value
+	 * @param string|null $value
 	 * @param array $arguments
 	 * @return int
 	 */

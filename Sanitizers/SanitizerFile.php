@@ -11,7 +11,7 @@ use Pandora3\Widgets\Form\Interfaces\SanitizerInterface;
 class SanitizerFile implements SanitizerInterface {
 
 	/**
-	 * @param mixed $value
+	 * @param mixed|null $value
 	 * @param array $arguments
 	 * @return UploadedFile|null
 	 */

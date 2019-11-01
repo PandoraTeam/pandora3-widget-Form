@@ -9,12 +9,12 @@ use Pandora3\Widgets\Form\Interfaces\SanitizerInterface;
 class SanitizerTrim implements SanitizerInterface {
 	
 	/**
-	 * @param string $value
+	 * @param string|null $value
 	 * @param array $arguments
 	 * @return string
 	 */
 	public static function sanitize($value, array $arguments = []): string {
-		return trim($value);
+		return $value ? trim($value) : '';
 	}
 	
 }

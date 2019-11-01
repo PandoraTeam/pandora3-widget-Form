@@ -9,7 +9,7 @@ use Pandora3\Widgets\Form\Interfaces\SanitizerInterface;
 class SanitizerBoolean implements SanitizerInterface {
 	
 	/**
-	 * @param string $value
+	 * @param string|null $value
 	 * @param array $arguments
 	 * @return bool
 	 */

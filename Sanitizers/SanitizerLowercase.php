@@ -10,12 +10,12 @@ use Pandora3\Widgets\Form\Interfaces\SanitizerInterface;
 class SanitizerLowercase implements SanitizerInterface {
 
 	/**
-	 * @param string $value
+	 * @param string|null $value
 	 * @param array $arguments
 	 * @return string
 	 */
 	public static function sanitize($value, array $arguments = []): string {
-		return mb_strtolower($value);
+		return $value ? mb_strtolower($value) : '';
 	}
 
 }

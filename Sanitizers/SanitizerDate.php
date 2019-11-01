@@ -11,7 +11,7 @@ use Pandora3\Widgets\Form\Interfaces\SanitizerInterface;
 class SanitizerDate implements SanitizerInterface {
 	
 	/**
-	 * @param string $value
+	 * @param string|null $value
 	 * @param array $arguments
 	 * @return Date|null
 	 */
