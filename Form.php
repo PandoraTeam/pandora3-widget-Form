@@ -370,14 +370,14 @@ abstract class Form {
 	 */
 	protected function sanitize(array $values): array {
 		$sanitizers = $this->sanitizers();
-		foreach ($sanitizers as $fieldName => $fieldSanitizers) {
-			if (!$this->hasField($fieldName)) {
+		foreach ($sanitizers as $field => $fieldSanitizers) {
+			if (!$this->hasField($field)) {
 				continue;
 			}
 			if (is_string($fieldSanitizers)) {
 				$fieldSanitizers = [$fieldSanitizers];
 			}
-			$value = $values[$fieldName] ?? null;
+			$value = $values[$field] ?? null;
 			foreach ($fieldSanitizers as $key => $sanitizer) {
 				$arguments = [];
 				if (!is_numeric($key)) {
@@ -393,7 +393,7 @@ abstract class Form {
 				}
 				$value = $sanitizerClass::sanitize($value, $arguments);
 			}
-			$values[$fieldName] = $value;
+			$values[$field] = $value;
 		}
 		return $values;
 	}
