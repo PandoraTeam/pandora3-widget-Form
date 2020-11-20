@@ -366,12 +366,21 @@ abstract class Form {
 
 	/**
 	 * @param array $values
+ 	 * @return array
+ 	 */
+	protected function sanitize(array $values): array {
+		return $this->sanitizeFields($this->sanitizers(), $values);
+	}
+
+	/**
+	 * @param array $sanitizers
+	 * @param array $values
 	 * @return array
 	 */
-	protected function sanitize(array $values): array {
-		$sanitizers = $this->sanitizers();
+	protected function sanitizeFields(array $sanitizers, array $values): array {
 		foreach ($sanitizers as $field => $fieldSanitizers) {
 			if (!$this->hasField($field)) {
+				// todo: log warning
 				continue;
 			}
 			if (is_string($fieldSanitizers)) {
@@ -494,9 +503,9 @@ abstract class Form {
 		if (!$wrap) {
 			return $html;
 		}
-		$idDisabled = $params['disabled'] ?? $field->context['disabled'] ?? false;
+		$isDisabled = $params['disabled'] ?? $field->context['disabled'] ?? false;
 		$fieldClass = $params['fieldClass'] ?? $field->context['fieldClass'] ?? '';
-		if ($idDisabled) {
+		if ($isDisabled) {
 			$fieldClass .= ' disabled';
 		}
 		$labelAfter = $params['labelAfter'] ?? $field->context['labelAfter'] ?? false;
